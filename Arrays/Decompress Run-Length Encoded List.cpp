@@ -18,9 +18,9 @@ At the end the concatenation [2] + [4,4,4,4] is [2,4,4,4].
 class Solution {
 public:
     vector<int> decompressRLElist(vector<int>& nums) {
-    vector<int> res;
+    vector<int> a;
     for (int i=0; i<nums.size(); i+=2)
-        res.insert(res.end(), nums[i], nums[i+1]);
-    return res;
+        a.insert(a.end(), nums[i], nums[i+1]);
+    return a;
     }
 };
