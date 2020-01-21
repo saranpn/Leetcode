@@ -1,6 +1,8 @@
-/*
 
-Given an array nums of integers, return how many of them contain an even number of digits.
+// Source : https://leetcode.com/problems/find-numbers-with-even-number-of-digits/
+// Author : Saravana Kumar
+
+/* Given an array nums of integers, return how many of them contain an even number of digits.
  
 Example 1:
 
