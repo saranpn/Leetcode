@@ -1,4 +1,4 @@
-//SOurce: https://leetcode.com/problems/cells-with-odd-values-in-a-matrix/
+//Source: https://leetcode.com/problems/cells-with-odd-values-in-a-matrix/
 //Author: Saravana Kumar
 
 
