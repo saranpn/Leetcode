@@ -29,6 +29,8 @@ public:
 };
 */
 
+//***********************************************  RECURSIVE SOLUTION **********************************************
+
 class Solution 
 {  //Define this function in private: Why ?? 
     void traversal_preorder(Node *root, vector<int> &result) //Define the traversal_preorder function with *root and &result as parameters
