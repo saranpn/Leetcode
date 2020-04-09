@@ -37,6 +37,7 @@ You should return this subtree:
 // Here, val ---> is the value we want to search
 //       root->val ---> is the data value of the particular root node 
 
+/*************************************** RECURSIVE METHOD ***************************************************/
 
 class Solution {
 public:
