@@ -38,6 +38,7 @@ public:
 
     1. XOR of a number with the same number gives zero. Example: 2 ^ 2 = 0 
     2. XOR of a number with zero gives that number itself. Example: 3 ^ 0 = 3
+    3. XOR of a number with the different number gives the sum of two numbers. Example: 2 ^ 4 = 6
     
     [Then what about XOR of a number with another different number] --> It modify/arrange itself
         m = 4 ^ 1 ^ 2 ^ 1 ^  2 
