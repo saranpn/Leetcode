@@ -45,5 +45,24 @@ public:
             return 0;   //If false, return and exit the function 
 }
 };
+
 //************************************************  METHOD 2 - Using SETS ******************************
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) 
+    {
+        set<int> MySet;  //Set is created 
+        
+        for(int i =0; i < nums.size(); i++)
+        {
+            if(MySet.count(nums[i]))
+                return true;
+            
+            MySet.insert(nums[i]);     //Set is initialized here one by one. If duplicate number is inserted into the set, then for the next itearation it checks for the duplicate element in if loop and returns true
+        }
+        
+        return false; //If there are no duplicates, then it will return false 
+    }
+};
 
