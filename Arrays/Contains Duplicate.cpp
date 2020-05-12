@@ -59,7 +59,9 @@ public:
             if(MySet.count(nums[i]))
                 return true;
             
-            MySet.insert(nums[i]);     //Set is initialized here one by one. If duplicate number is inserted into the set, then for the next itearation it checks for the duplicate element in if loop and returns true
+/* Set is initialized here one by one. If duplicate number is inserted into the set, 
+ then for the next itearation it checks for the duplicate element in if loop and returns true */
+            MySet.insert(nums[i]);    
         }
         
         return false; //If there are no duplicates, then it will return false 
