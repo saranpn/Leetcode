@@ -1,12 +1,13 @@
 //Author: Saravana Kumar
 //Source: https://leetcode.com/problems/rotate-array/
 
-
 class Solution {
     public:
 
-/* IDEA: Using Extra(another) vector. Store the last elements in first vector and store first elements in another vector. 
-Finally, push back the last elements of first vector inside the another vertor.      */
+/* IDEA1: Using Extra(another) vector. Time complexity: O(n). Space complexity: O(n)
+
+Store the last elements in first vector and store first elements in another vector. 
+Finally, push back the last elements of first vector inside the another vertor */
       
         void rotate(vector<int>& nums, int k)  //Taking the initial vector and k as parameter
         
