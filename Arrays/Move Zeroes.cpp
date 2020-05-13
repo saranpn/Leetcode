@@ -14,7 +14,7 @@ Minimize the total number of operations.
          At first both left and right pointer will be pointing on the zero index. 
          Right pointer used to see if it is zeor or non zero element.
          If it is zero, don't do anything just increment the right pointer.
-         If it is non-zero element, swap it with left pointer which is pointing the index and then increment both left and right pointer.
+         If it is non-zero element, swap it with left pointer which is pointing the index and then increment both left and right pointer */
 
 class Solution {
 public:
