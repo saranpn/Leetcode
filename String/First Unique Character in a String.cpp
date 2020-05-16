@@ -34,7 +34,7 @@ public:
         for(int i=0; i<s.size(); i++) //Step 3
         {
             if(MyMap[s[i]] == 1)   //Check the occurence, which has only 1 
-                return i;          // return the index 
+                return i;          // Step 4 -> return the index 
         }
         
         return -1; //Step 5
