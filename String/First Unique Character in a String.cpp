@@ -70,11 +70,13 @@ public:
         }
         
         //Traverse though the result vector and find the first element whose value is 1 and return it.
-        for(int i=0; i<s.size(); i++) //We only need to traverse for the number of characters time in the result vector
+        //We only need to traverse for the number of characters time in the result vector and it should be in the same  order of the char given to return the first unique character
+        for(int j=0; j<s.size(); j++) 
         {
-            if(result[temp] == 1)
+            int temp = s[j] - 'a'; //Get the index value of the character giver
+            if(result[temp] == 1)      // And check if it's frequency is only 1 times
             {
-                return i;
+                return j;          //if Yes, return that index 
             }
         }
         
