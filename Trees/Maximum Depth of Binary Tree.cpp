@@ -32,7 +32,7 @@ return its depth = 3.
  * };
  */
 
-/* IDEA:  Using Recursion go and find the maximum depth of the left subtree and right subtree and add 1 (for root node) and return the value. 
+// IDEA:  Using Recursion go and find the maximum depth of the left subtree and right subtree and add 1 (for root node) and return the value. 
 
 class Solution {
 public:
