@@ -17,6 +17,8 @@ Output: 1
 
 ********************************************************************************************************************/
 
+//IDEA: Do inorder traversal of the tree and make a count everytime when you reach a node, until k node is reached, then return that node's value. 
+      
 class Solution {
 public:
     int kthSmallest(TreeNode* root, int k) 
