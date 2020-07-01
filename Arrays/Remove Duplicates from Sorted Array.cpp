@@ -21,17 +21,32 @@ class Solution {
 public:
     int removeDuplicates(vector<int>& nums) 
     {
-        int last_unique = -1;  //first pointer acts as an index to store the unique elements into the nums array
-    
-        for(int i = 0; i < nums.size(); ++ i) //second pointer also acts as pointer which traverse through the array
-        {   //first element in the array is always a unique element. So, last_unique = -1 is only for first iteration and keep the first element in the same place itself. 
-            
-            //Then from second iteration, check for the unique number, if we find it then throw that element into the vector
-            
-            if(last_unique == -1 || nums[i] != nums[last_unique]) 
-                nums[++last_unique] = nums[i];
-        }
         
-        return last_unique+1; //So, the last_unique value is incremented only when the loop finds the unique number, and +1 is to find the total length
+    if(nums.size() == 0) return 0;
+    if(nums.size() == 1) return 1; 
+        
+    int next = 1; //2nd pointer i for next non duplicate element 
+    for(int i=0; i<nums.size(); i++) //1st pointer i for iteration
+    {
+        if(nums[next-1] != nums[i])
+        {
+            nums[next] = nums[i]; //both pointer on same location
+            next++; //finding the number of unique elements
+        }
+    }
+    
+    return next; //answer 
     }
 };
+
+/* IDEA: Using two pointer  
+         1st pointer --> used for iteration
+         2nd pointer --> used to find next non duplicate element
+         
+         Comapare the values of 1st and 2nd pointer 
+         
+         This 2nd pointer will be incrememted only if it finds the            next non duplicate element. 
+         
+         Return the 2nd pointer. 
+    
+*/ 
