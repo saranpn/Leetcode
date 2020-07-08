@@ -30,8 +30,8 @@ public:
     {
         if(nums[next-1] != nums[i])
         {
-            nums[next] = nums[i]; //both pointer on same location
-            next++; //finding the number of unique elements
+            nums[next] = nums[i]; //inserting the unique element into the vector 
+            next++; //Incrementing Next pointer (OR) Finall finding the number of unique elements
         }
     }
     
