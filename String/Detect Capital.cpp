@@ -1,82 +1,89 @@
+//*************************************** SOLUTION 1: Brute Foce Method ********************************************************
+// TIME COMPLEXITY: O(N) --> Where N is the number of characters in the array. We iterate through the all the characters only once. 
+// SPACE COMPLEXITY: O(1) --> We are not stroring any extra spaces here. 
+
 class Solution {
 public:
     bool detectCapitalUse(string s) 
     {
-    int count0 = 0;
-    int count = 0;
-    int count1 = 0;
-    int i = 0;
-        
-    if(s.size()==0 || s.size()==1)
-    {
-        cout << "True";
-        return true;
-    }
+        int word1 = 0;
+        int word2 = 0;
+        int word3 = 0;
     
-    for(int i=0; i<s.size(); i++)
-    { 
-        if(isupper(s[0]) && !isupper(s[1]))
+        //base case 
+        if(s.size()==0 || s.size()==1)
         {
-            if(i>0)
-            {
-            if(count0 == s.size() && islower(s[s.size()-1]))
-            {
-                cout << "True, 1st letter is upper case and all others are lower case";
-                return true;
-            }
-            else if(islower(s[i]) && isupper(s[0]))
-            {
-                count0 ++;
-            }
-            else
-            {
-                cout << "False, upper case letter found in between";
-                return false;
-            }
-            }
+            cout << "True";
+            return true;
         }
         
-        else if(islower(s[0]))
-        {
-            if(count == s.size())
+        //Iterate through the string
+        for(int i=0; i<s.size(); i++)
+        { 
+            //For word 1 case --> Example: Go, Leetcode 
+            if(isupper(s[0]) && !isupper(s[1]))
             {
-                cout << "True, No Upper Case letters" << endl;
-                return true; 
+                if(i>0)
+                {
+                    if(word1 == s.size() && islower(s[s.size()-1]))
+                    {
+                        cout << "True, 1st letter is upper case and all others are lower case";
+                        return true;
+                    }
+                    else if(islower(s[i]) && isupper(s[0]))
+                    {
+                        word1 ++;
+                    }
+                    else
+                    {
+                        cout << "False, upper case letter found in between";
+                        return false;
+                    }
+                }
             }
-            
-            else if (!isupper(s[i]))
+    
+            //For word 2 case --> Every letter is lower. Example: sad, hello 
+            else if(islower(s[0]))
             {
-                count ++;
+                if(word2 == s.size())
+                {
+                    cout << "True, No Upper Case letters" << endl;
+                    return true; 
+                }
+
+                else if (!isupper(s[i]))
+                {
+                    word2 ++;
+                }
+
+                else 
+                {
+                    cout << "False, Upper Case letter found in between";
+                    return false;
+                }
             }
-            
-            else 
-            {
-                cout << "False, Upper Case letter found in between";
-                return false;
-            }
-        }
         
-        else if(isupper(s[0]))
-        {
-            if (count1 == s.size())
+            //For word 3 case. Every letter is upper case --> Example: USA, PAN
+            else if(isupper(s[0]))
             {
-                cout << "True, All are Upper Case letters" << endl;
-                return true; 
+                if (word3 == s.size())
+                {
+                    cout << "True, All are Upper Case letters" << endl;
+                    return true; 
+                }
+
+                else if(!islower(s[i]))
+                {
+                    word3 ++;
+                }
+
+                else
+                {
+                    cout << "False, A lower case letter found in between the upper case letters";
+                    return false; 
+                }
             }
-            
-            else if(!islower(s[i]))
-            {
-                count1 ++;
-            }
-            
-            else
-            {
-                cout << "False, A lower case letter found in between the upper case letters";
-                return false; 
-            }
-        }
     }     
-        
         return true;
     }
 };
