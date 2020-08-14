@@ -43,3 +43,43 @@ public:
         return result; 
     }
 };
+
+
+
+// ONLINE COMPILER SOLUTION: 
+
+#include <iostream>
+#include<vector> 
+#include<unordered_map>
+
+using namespace std;
+
+int main()
+{
+    vector<int> nums = {1,2,3,4};
+
+    vector<int>result;
+    
+    int totalproduct = 1; 
+
+    for(int i=0; i<nums.size(); i++)
+    {
+        totalproduct = totalproduct * nums[i];
+        
+    }
+    
+    cout << "totalproduct = " << totalproduct << endl;
+    
+    for(int i=0; i<nums.size(); i++)
+    {
+        result.push_back(totalproduct/nums[i]);
+    }
+    
+    for(int j=0; j<result.size(); j++)
+    {
+        cout << result[j] << " ";
+    }
+
+    return 0;
+}
+
