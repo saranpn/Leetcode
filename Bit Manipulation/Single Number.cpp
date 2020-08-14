@@ -18,6 +18,10 @@ Input: [4,1,2,1,2]
 Output: 4
 
 ******************************************************************************************/
+
+//Time: O(N)
+//Space: O(1) 
+
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
