@@ -11,6 +11,12 @@ Output: 4
 Explanation: 9 exists in nums and its index is 4
 
 ***********************************************************************************************************************************************/
+
+/* IDEA: Take 3 pointers. 2 pointer "left" and "right" outside the while loop and 1 pointer "middle" inside the while loop. 
+         If the nums[middle] == target, return it. 
+         or else continue to divide the array into half depending upon the target value and the element. */
+
+//************************************************ Only applicable for "SORTED" array *********************************************************** 
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
