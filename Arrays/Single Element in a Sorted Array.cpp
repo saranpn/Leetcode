@@ -36,7 +36,6 @@ public:
                 return nums[i];
             }
         }
-        
         return 0;
     }
 };
@@ -63,7 +62,6 @@ public:
                 return v.first;
             }
         }
-        
         return 0;
     }
 };
