@@ -50,3 +50,13 @@ public:
         return -1; 
     }
 };
+
+/* QUESTION: Why middle Element is found this way ?? 
+
+--> An easy way to find the middle would be: middle=(start+end)/2middle=(start+end)/2. 
+--> For C++, this equation will work for most cases, but when start or end is large, this equation will give us the wrong result due to integer overflow. 
+--> Imagine that start is equal to the maximum range of an integer. Now adding anything to start will result in an integer overflow. 
+--> Since we need to add both the numbers first to evaluate our equation, an overflow might occur. 
+--> The safest way to find the middle of two numbers without getting an overflow is as follows: middle  = start + (end-start)/2
+*/
+
