@@ -17,8 +17,33 @@ Input: nums = [3,3,7,7,10,11,11]
 Output: 10
 
 *********************************************************************************************************************************************/
+//SOLUTION 1: NO EXTRA SPACE --> OPTIMAL SOLUTION 
 
-// SOLUTION 1: USING MAP (NOT OPTIMAL) 
+class Solution {
+public:
+    int singleNonDuplicate(vector<int>& nums) 
+    {
+        if(nums.size() == 1)
+        {
+            return nums[0];
+        }
+        
+     //Key point here is, moving i 2-times 
+        for(int i=0; i<nums.size(); i=i+2)
+        {
+            if(nums[i] != nums[i+1])
+            {
+                return nums[i];
+            }
+        }
+        
+        return 0;
+    }
+};
+
+//**************************************************************************************************************************************************
+
+// SOLUTION 2: USING MAP (NOT OPTIMAL) 
 
 class Solution {
 public:
