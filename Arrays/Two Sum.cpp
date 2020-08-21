@@ -9,9 +9,56 @@ Given nums = [2, 7, 11, 15], target = 9,
 Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1]
 
-********************************************************************************************************************/
-// IDEA 1: Use Map for better time complexity. So that we can go throught the array only once. 
+***************************************************************************************************************************************************/
+//SOLUTION 1: Using Sorting Technique --> MOST OPTIMAL 
+//TIME COMPLEXITY: O(N log N) 
+//SPACE COMPLEXITY: O(1) 
+
+// NOTE: This method cannot be used if want to return the indices, since after sorting, the index positions of all the element changes 
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) 
+    {
+        sort(nums.begin(),nums.end()); 
+        
+        //{2,3,4}
+        
+        vector<int> result; //to store the result 
+        
+        int left = 0;
+        int right = nums.size() - 1;
+    
+        while(left < right)
+        {
+            int sum  = nums[left] + nums[right];
+
+            if(sum == target)
+            {
+                result.push_back(left);
+                result.push_back(right);
+                return result; 
+            }
+            else if(sum > target) //if sum is greater than target
+            {
+                right --; //decrement right pointer 
+            }
+            else if(sum < target) //if sum is lesser than target
+            {
+                left ++; //increment left pointer 
+            }
+        }
+
+        return result; 
+}
+        
+};
+
+//*************************************************************************************************************************************************
+
+// SOLUTION 2: Use Map for better time complexity. So that we can go throught the array only once. 
 //TIME COMPLEXITY: O(N)
+//SPACE COMPLEXITY: O(N) --> because of map 
 
 class Solution {
 public:
@@ -44,8 +91,10 @@ public:
     }
 };
 
-//IDEA 2: BRUTE FORCE method.
-// TIME COMPLEXITY: O(n^2) since we are going through the array twice
+//***********************************************************************************************************************************************
+//SOLUTION 3: BRUTE FORCE method.
+// TIME COMPLEXITY: O(n^2) --> since we are going through the array twice
+// SPACE COMPLEXITY: O(1) --> since we are going to stay only 2 numbers in the result vector 
 
 /* Step 1: Pick every element in an array and add it with every other element ahead of the picked element. 
    Step 2: After every add, check if the sum is equal to target
