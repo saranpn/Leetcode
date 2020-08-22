@@ -14,9 +14,13 @@ Explanation: 9 exists in nums and its index is 4
 
 /* IDEA: Take 3 pointers. 2 pointer "left" and "right" outside the while loop and 1 pointer "middle" inside the while loop. 
          If the nums[middle] == target, return it. 
-         or else continue to divide the array into half depending upon the target value and the element. */
+         or else continue to divide the array into half depending upon the target value and the element. 
 
-//************************************************ Only applicable for "SORTED" array *********************************************************** 
+             //TIME COMPLEXITY: O(log N) --> WHY ?? Because we are eliminating half of our array at every time we traverse. That gives us the time complexity O(log N) 
+             //SPACE COMPLEXITY: O(1) --> Constant Time                                   
+                                              
+
+//************************************************ Only applicable for "SORTED" array *************************************************************/
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
