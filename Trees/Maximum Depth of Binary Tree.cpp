@@ -45,11 +45,15 @@ public:
             return depth; //Then return the depth as zero 
         }
         
+        int left_depth = maxDepth(root->left);
+        int right_depth = maxDepth(root->right);
+        // How deep is you left subTree and How deep is your right subTree. And once we know that, we take the maximum depth from them and 1 to include ourself
+        
         /* First maxDepth(root->left) will find the maximum depth of the left subtree and put it into 1st element in the max function and 
         then, maxDepth(root->right) will find the maximum depth of the right subtree and put it into 2nd element in the max function
         then, it will give the maximum value and it will be added to 1 to include the root element and the final value is stored in depth */
         
-        depth = 1 + max(maxDepth(root->left),maxDepth(root->right)); 
+        depth = 1 + max(left_depth,right_depth); 
         
         return depth; //return the max depth of the binary tree 
     }
