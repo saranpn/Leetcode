@@ -1,16 +1,28 @@
 /* Level Order Traversal: Use Queue (BFS) 
 
 --> Create a Queue with node data type and push the root node to the Queue. 
+--> Create a 2D Vector (Matrix) to store the result. 
 --> Inside the While loop (Until the Queue is not empty) 
-            => Make the pointer of node data type and to point the front node of the queue. 
-            => Pop out the element from Queue
-            //you can print the data in this line. 
-            => if there is a left child, then push it to the Queue
-            => if there is a right child, then push it to the Queue 
-            
+            => Create a scalar (for Q size) and Vector (to insert elements into the matrix) 
+            => Inside for loop, (condition: Q size) (Processing 1 node: 5 steps) 
+                        * Create a pointer of Node type and make it to point it to the front element of the Q 
+                        * Push back the element into the Vector. 
+                        * Pop out the element from the Q
+                        * Push the left child of that node into Q (if there is one)
+                        * Push the right child of that node into Q (if there is one) 
+                                                        -- exit the for loop 
+            => Push back the nums vector into the Matrix 
+                                                        -- exit the while loop
+--> Finally return the Matrix
+                               
  ******************************************************************************************************************************/
 
-// Add a element to the Queue --> Then add it to the vector --> Then add it to the Matrix 
+/*   Create: 
+              Q and Matrix (Outside) 
+              Vector and Scalar (inside While loop) 
+              Pointer (node data type) (inside for loop) 
+              
+********************************************************************************************************************************/ 
 
 class Solution {
 public:
