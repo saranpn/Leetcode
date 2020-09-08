@@ -26,35 +26,34 @@
 
 class Solution {
 public:
-    vector<vector<int>> result; //Matrix to store the result 
-    queue<TreeNode*> MyQueue; //Queue for BFS, with Node datatype 
-
-    vector<vector<int>> levelOrder(TreeNode* root) 
-    {
-        if (root ==NULL) return {};
+    vector<vector<int>> levelOrder(TreeNode* root) {
         
-        MyQueue.push(root); //First push the root node to the queue 
+        //Base case 
+        if(root == NULL) return {};
         
-        while(!MyQueue.empty()) //Continue until the queue is not empty 
+        vector<vector<int>> result; //to store the resultant matrix 
+        
+        queue<TreeNode*> Q;  //Since Level Order Traversal 
+        Q.push(root); //push the root element into the Queue
+        
+        while(!Q.empty())
         {
-            vector<int> num; //to sotre the value for the node 
-            int n = MyQueue.size();
-            cout << "n = " << n << endl; //gives you the row size 
-            for(int i = 0; i < n; ++i)
-            {
-                TreeNode* curr = MyQueue.front();
-                MyQueue.pop();
-                num.push_back(curr->val); 
-                for(int i = 0; i<num.size(); i++)
-                {
-                    cout << "num = "  << num[i] << " ";
-                }
-                cout << endl;
-                if(curr->left != NULL) MyQueue.push(curr->left);
-                if(curr->right != NULL) MyQueue.push(curr->right);
+            vector<int> nums; //To insert elements into the matrix
+            int n = Q.size(); //To keep track of Q size 
+            
+            for(int i=0; i<n; i++)
+            {   //Processing the Node: 
+                TreeNode* curr = Q.front(); //Create a pointer and make it to point on front element of the Queue
+                nums.push_back(curr->val);  //Push that element into the nums vector using that pointer 
+                Q.pop();                    //Pop out the element from the Que, (Meaning that we have processed it) 
+                
+                //Getting ready for another iteration
+                if(curr->left !=NULL){ Q.push(curr->left); } //Push the left child of that node into Q (if there is one)
+                if(curr->right != NULL){ Q.push(curr->right); } //Push the right child of that node into Q (if there is one) 
             }
-            result.push_back(num);
+            
+            result.push_back(nums); //Push back the nums vector into the Matrix, until the Q is not empty 
         }
-       return result; 
+        return result; //Finally return the final matrix 
     }
 };
