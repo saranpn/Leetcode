@@ -32,22 +32,20 @@ class Solution {
 public:
     int maxDepth(TreeNode* root) 
     {
+        //Base Case
+        if(root == NULL) return 0; 
+        
         int depth = 0; //initiailize the depth variable 
         
-        if(root == NULL) // if there is no root node, then no tree
-        {
-            return depth; //Then return the depth as zero 
-        }
-        
-        int left_depth = maxDepth(root->left); //to calculate the depth of left_subTree 
-        int right_depth = maxDepth(root->right); //to calculate the depth of right_subTree 
+        int left_subTree = maxDepth(root->left); //to calculate the depth of left_subTree 
+        int right_subTree = maxDepth(root->right); //to calculate the depth of right_subTree 
         // How deep is you left subTree and How deep is your right subTree. And once we know that, we take the maximum depth from them and 1 to include ourself
         
         /* First maxDepth(root->left) will find the maximum depth of the left subtree and put it into 1st element in the max function and 
         then, maxDepth(root->right) will find the maximum depth of the right subtree and put it into 2nd element in the max function
         then, it will give the maximum value and it will be added to 1 to include the root element and the final value is stored in depth */
         
-        depth = 1 + max(left_depth,right_depth);  //Then, select the max value of both left and right sub trees and then add 1 to consider the root node. 
+        depth = max(left_subTree,right_subTree) + 1;  //Then, select the max value of both left and right sub trees and then add 1 to consider the root node. 
         
         return depth; //return the max depth of the binary tree 
     }
