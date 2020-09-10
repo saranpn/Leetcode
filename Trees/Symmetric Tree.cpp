@@ -41,27 +41,22 @@ Space Complexity: O(height) --> Because we are doing the height traversal. So th
                                 and not proportional to the number of nodes */
 class Solution {
 public:
-    bool isSymmetric(TreeNode* root) //the function takes in root val as parameter
-    {
+    bool isSymmetric(TreeNode* root) {
+        //Case 1: Base Case
+        if(root == NULL)  return true;
         
-        if(root == NULL) return true; //if the root value is NULL, then the tree is symmetric
-        
-        //Create a function called check to check other conditions for symmetric
-        //return that check function, by passing the right and left child of the root node.
-        return check(root->left, root->right);  
+        return check(root->left,root->right);
     }
         
 private:
     bool check(TreeNode *leftSub, TreeNode *rightSub) //This function takes 
     {
-        //This checks value of left and right child are null
-        //If everything is symmetric, at one point leftSub and Right Sub will be null and it will return True 
-        if(leftSub == NULL && rightSub == NULL) 
-        {
-            return true; //if null return true 
-        }
-        else if(leftSub != NULL && rightSub != NULL) //if not null 
-        {   //Think of folding the Tree
+        //Case 2: if there is only root node, then return true
+        if(leftSub == NULL && rightSub == NULL) return true;  
+        
+        //If there are both left and right subtrees 
+        else if(leftSub != NULL && rightSub != NULL) 
+        {  
         
             //Check if its value matches
             return leftSub->val == rightSub->val && 
@@ -75,5 +70,4 @@ private:
         return false;  //thererfore return false. 
     }
 };
-
 
