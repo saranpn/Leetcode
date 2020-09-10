@@ -29,7 +29,7 @@ Inverted Fully */
 
 //TIME: O(N) (Since we are visiting all the nodes in the tree) 
 //SPACE: O(depth) = O(log N)
-         Because we using Call stack. Here the call stack depends on the depth of the tree. Because that is longest recursive call we can make.
+//         Because we using Call stack. Here the call stack depends on the depth of the tree. Because that is longest recursive call we can make.
          
 class Solution {
 public:
