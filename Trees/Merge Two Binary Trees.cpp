@@ -2,6 +2,7 @@ class Solution {
 public:
     TreeNode* mergeTrees(TreeNode *t1, TreeNode *t2) 
     {
+        if(t1 == NULL && t2 == NULL) return {}; //if both trees are Null, then return empty set
         if(t1 == NULL) return t2; //Case 1 
         if(t2 == NULL) return t1; //Case 2 
         
