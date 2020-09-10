@@ -57,3 +57,37 @@ public:
         return result; //Finally return the final matrix 
     }
 };
+
+
+
+/************************************************ Only Using Vector **************************************************************
+
+/*  1. Create a Queue and vector(for result) and Push the root node into the queue. 
+
+    2. While the queue is not empty, we need to process each node
+    3. Create a pointer of node data type and point it to the front element of the queue 
+    4. Push that node's val into the result vector using the pointer 
+    4. Pop out the element from the queue 
+    5. Push the left and right element of that node into the Q  */ 
+    
+            queue<TreeNode*> Q;  //Create a Queue (Since Level Order Traversal) 
+            vector<int> nums; //Create a vector for Result
+
+            Q.push(root);  //Push the root node into the queue. 
+
+            while(!Q.empty())  //While the queue is not empty, we need to process each node
+            {
+                TreeNode* curr = Q.front(); //Create a pointer of node data type and point it to the front element of the queue 
+                nums.push_back(curr->val);  //Push that node's val into the result vector using the pointer 
+                Q.pop();                    //Pop out the element from the queue               
+
+                //Push the left and right element of that node into the Q
+                if(curr->left !=NULL){ Q.push(curr->left); } 
+                if(curr->right != NULL){ Q.push(curr->right); } 
+            }
+
+            //To Print out the result
+            for(int i=0; i<nums.size(); i++)
+            {
+                cout << nums[i] << " ";
+            }
