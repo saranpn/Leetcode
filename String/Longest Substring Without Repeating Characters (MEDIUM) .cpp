@@ -4,7 +4,7 @@ public:
          
         int start = 0; //Starting Pointer for sliding window 
         int end = 0;   //End Pointer for sliding window 
-        int ans = 0;   //To store the answer 
+        int current_longest = 0; //To get the current longest sub string 
         
         unordered_set<char> MySet; //Create Set, since it stores unique elements
         
@@ -14,7 +14,8 @@ public:
             {
                 MySet.insert(s[end]); //then, insert the character in set  
                 end++;                //and update the end pointer 
-                ans = max(ans,end-start); //Check if the new distance is longer that the current answer. If yes, then replace that with current answer. 
+                int new_longest = end - start; //Get the new longest sub string 
+                current_longest = max(current_longest,new_longest); //Select the maximum between the current longest and new longest substring  
             } 
             else  //If the character already exist in the set (repeated char)
             {
@@ -22,6 +23,6 @@ public:
                 start++; //and update the start pointer 
             }
         }
-        return ans;  //Finally return the answer 
+        return current_longest;  //Finally return the answer 
     }
 };
