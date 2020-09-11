@@ -17,6 +17,8 @@ Output: false
 *********************************************************************************************************************/
 
 // IDEA: USING TWO POINTER TECHNIQUE
+// Time: O(N)
+// Space: O(1)
 
 class Solution {
 public:
@@ -40,16 +42,14 @@ public:
                 continue;
             }
             
-//Two things to be noted in this if case:
-// 1. Here we are are considering everything as lowercase i.e. change the upper case to lower using tolower function. 
-// 2. With only the "condition" of if loop we can increment or decrement the values without even entering the if case. 
+// Here we are are considering everything as lowercase i.e. change the upper case to lower using tolower function. 
+       
+            if(tolower(s[left]) != tolower(s[right])) return false; //if not equal 
             
-//if the values are equal just increment left and right pointers without entering the if case
-//if the values are equal then enter the if case and return flase
-            
-            if(tolower(s[left++]) != tolower(s[right--])) 
+            else
             {
-                return false;
+                left ++;
+                right --;
             }
             
         }
