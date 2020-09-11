@@ -1,3 +1,21 @@
+class Solution {
+public:
+    void reverseString(vector<char>& s) 
+    {
+        int n = s.size();
+        
+        int left = 0;
+        int right = n-1;
+        
+        while(left<right)
+        {
+            swap(s[left],s[right]);
+            left++;
+            right--;
+        }
+    }
+};
+
 //************************************************** Solution 1: Using Pointers ********************************************************************************
  
 // Time: O(n)  
@@ -5,14 +23,23 @@
 
 class Solution {
 public:
-    void reverseString(vector<char>& s) {
+    void reverseString(vector<char>& s) 
+    {
+        int n = s.size();
         
-        int i=0, j=s.size()-1;
+        int left = 0;
+        int right = n-1;
         
-        for(i,j; i<j; ++i, --j)
-            swap(s[i],s[j]);
+        while(left<right)
+        {
+            swap(s[left],s[right]);
+            left++;
+            right--;
+        }
     }
 };
+
+
 
 //************************************************** Solution 2: Using STL ********************************************************************************
  
