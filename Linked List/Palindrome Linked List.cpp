@@ -1,30 +1,31 @@
+//*****************************************************  SOLUTION 1: Using Array ****************************************************
+//Time: O(N)
+//Space: O(N)
+
 class Solution {
 public:
     bool isPalindrome(ListNode* head) 
     {
-        if(head == NULL)
-        {
-            return true;
-        }
+        if(head == NULL) return true;
         
         vector<int> result; 
         
-        while(head != NULL)
+        while(head != NULL) //Push into the result array 
         {
             result.push_back(head->val);
             head = head->next;
         }
         
-        int len = result.size();
+        int len = result.size(); //Get the size of the array 
         
-        for(int i=0; i<len/2; i++)
+        for(int i=0; i<len/2; i++) //Traverse only half of the array 
         {
-            if(result[i] != result[len-i-1])
+            if(result[i] != result[len-i-1]) //compare first and last value of the array 
             {
-                return false;
+                return false; //if not same, return false 
             }
         }    
-            return true;
+            return true; //if same, return true
     }
 };
 
