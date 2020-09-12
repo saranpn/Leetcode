@@ -11,32 +11,26 @@ APPROACH: --> Traverse the shorter one and the longer one at the same time, by u
        
 class Solution {
 public:
-    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) 
+    {
+        ListNode* tempA = headA; //pointer for list A
+        ListNode* tempB = headB; //Pointer for list B
         
-        ListNode *tempA = headA;
-        ListNode *tempB = headB;
+        //if listA or listB is equal to Null, then no intersection. So return Null
+        if(tempA == NULL || tempB == NULL) return NULL;
         
-        if(tempA == NULL || tempB == NULL) 
-       {
-           return NULL;
-       }
-        
-        //untill the tempA is not equal to tempB 
-        while(tempA != tempB)
+        while(tempA != tempB) //when there is no intersection,
         {
-            tempA = tempA->next; //traverse the list A
-            tempB = tempB->next; //traverse the list B
- 
-            if(tempA == NULL){    
-                tempA = headB; }
+            tempA = tempA->next; //Traverse list A
+            tempB = tempB->next; //Traverse list B
             
-            if(tempB == NULL){    
-                tempB = headA; }
+            if(tempA == tempB) return tempA; //if we found the intersection return 
             
-            if(tempA == tempB){ 
-                return tempA; }
+            else if(tempA == NULL) tempA = headB; //if we reach end of list A, then make list A pointer to point on head of list B
+            
+            else if(tempB == NULL) tempB = headA; //if we reach end of list B, then make list B pointer to point on head of list A
         }
         
-        return tempA; 
-    }  
+        return tempA; //Finally return either tempA or tempB
+    }
 };
