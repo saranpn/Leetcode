@@ -83,6 +83,36 @@ public:
         /* fix the head pointer */
         return p; 
     }
-    
-    
+};
+
+
+//*************************************** SOLUTION 3: Using Stack *****************************************************************
+//Time: O(N) (Traversing the list and stack once)
+//Space: O(N) (For Stack) 
+
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) 
+    {
+        stack<int> MyStack; //Create a Stack 
+        
+        ListNode *temp = head; // Create a pointer called temp and make it to point to head
+        
+        while(temp != NULL) //Continue until temp reaches null 
+        {
+            MyStack.push(temp->val); //Push the value of the node into the stack 
+            temp = temp->next; //traverse the list 
+        }
+        
+        temp = head; //Make temp node to point it back to the head (Which was pointing on the NULL before)
+        
+        while(!MyStack.empty()) //Continue until the stack becomes empty
+        {
+            temp->val = MyStack.top(); //Make temp->val to be be equal to top value from the stack
+            MyStack.pop(); //Pop out the top element from the stack
+            temp = temp->next; //Taverse the list 
+        }
+        
+        return head; //Finally return the head 
+    }
 };
