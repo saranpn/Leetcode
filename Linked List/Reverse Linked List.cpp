@@ -29,23 +29,23 @@ METHOD 1: Iterative Method - Time Complexity => O(N) and Space Complexity => O(1
 
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head) {
+    ListNode* reverseList(ListNode* head) 
+    {
+        ListNode *prev, *curr, *NEXT;
         
-        ListNode *prev, *curr, *n;
-        
-        prev = NULL;
-        curr = head;
+        prev = NULL; //initializing pointer 1
+        curr = head; //initializing pointer 2
         
         while(curr != NULL)
         {
-            n = curr -> next; 
-            curr ->next = prev;
-            prev = curr;
-            curr = n;
+            NEXT = curr->next; //initializing pointer 3 (inside while loop)
+            curr->next = prev; //Reverse the curr->next 
+            prev = curr; //increment the previous pointer 
+            curr = NEXT; //increment the current pointer 
         }
         
-        head = prev;
-        return prev;
+        head = prev; //prev will the last node, so point the head to that node
+        return head; //Finally return head
     }
 };
 
