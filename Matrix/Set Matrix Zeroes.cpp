@@ -74,8 +74,8 @@ public:
     int h = matrix.size();
     int w = matrix[0].size();
     
-    vector<bool> row_zero(h);
-    vector<bool> column_zero(w);
+    vector<int> row_zero(h);
+    vector<int> column_zero(w);
     
     for(int i=0; i<h; i++)
     {
