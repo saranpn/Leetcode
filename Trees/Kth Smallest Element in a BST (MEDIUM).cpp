@@ -1,23 +1,7 @@
-//Author: Saravana Kumar 
-//Source: https://leetcode.com/problems/kth-smallest-element-in-a-bst/
+//********************************************************************************************************************/
 
-/* Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.
-
- 
-
-Example 1:
-
-Input: root = [3,1,4,null,2], k = 1
-   3
-  / \
- 1   4
-  \
-   2
-Output: 1
-
-********************************************************************************************************************/
-
-//IDEA: Do inorder traversal of the tree and make a count everytime when you reach a node, until k node is reached, then return that node's value. 
+//IDEA: Do inorder traversal of the tree and make a count everytime when you reach a node, 
+//until k node is reached, then return that node's value. 
       
 class Solution {
 public:
