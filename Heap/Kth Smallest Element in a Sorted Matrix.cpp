@@ -1,29 +1,26 @@
-// Author: Saravana Kumar
+//*********************************************** Using Max Heap *************************************************
 
 class Solution {
 public:
-    int kthSmallest(vector<vector<int>>& matrix, int k) {
-   
-    //creating a priority queue of matrix to implement max-heap
-    priority_queue<int,vector<int>> result;
-    
- 
-    for(int i=0; i<matrix.size(); i++)
+    int kthSmallest(vector<vector<int>>& matrix, int k) 
     {
-        for(int j=0; j<matrix.size(); j++)
+        priority_queue<int> Q; //Using max heap 
+        
+        for(int i=0; i<matrix.size(); i++)
         {
-            if(result.size()<k)
-            { //Traversing through the nums vector and push it into the priority_queue
-                result.push(matrix[i][j]);
-            }
-            //Afer Pushing, follow the same method 
-            else if(matrix[i][j] < result.top())
+            for(int j=0; j<matrix[i].size(); j++)
             {
-                result.pop();
-                result.push(matrix[i][j]);
+                Q.push(matrix[i][j]);   //Push Everything to max heap  
             }
         }
-    }
-    return result.top();
+        
+        int n = Q.size() - k; //Get the number of elements we have to pop out from the Queue 
+        
+        for(int i= 0; i<n; i++) //Traverse and pop out from the Queue 
+        {
+            Q.pop();
+        }
+        
+        return Q.top(); //Finally return the Kth Smallest Element
     }
 };
