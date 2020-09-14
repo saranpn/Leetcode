@@ -1,3 +1,7 @@
+//****************************************************** Solution 1: Sliding Window Approach **************************************************
+//Time: O(N)
+//Space: O(1)
+
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) 
@@ -5,7 +9,9 @@ public:
         int currMax = nums[0];
         int maxSoFar = nums[0];
 
-        for (int i = 1; i < nums.size(); i++) 
+        int n = nums.size();
+        
+        for (int i = 1; i < n; i++) 
         {
         /* Standing at a number we need to ask, 
             1) By adding this number to the previous contiguous number will give us the maximum sum (OR)
