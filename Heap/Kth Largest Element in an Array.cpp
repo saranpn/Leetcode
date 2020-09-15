@@ -35,8 +35,33 @@ public:
     }
 };
 
+//***************************************************** Solution 2: Using Heap (With Priority Queue) **********************************************
+//Time: O(N log k)
+//Space: O(k)
 
-//***************************************************** SOLUTION 2: Using Sorting Technique *******************************************************
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) 
+    {
+        int n = nums.size();
+        
+        priority_queue<int> Q;
+        
+        for(int i=0; i<n; i++)
+        {
+            Q.push(nums[i]);
+        }
+        
+        for(int j=0; j<k-1; j++)
+        {
+            Q.pop();
+        }
+        
+        return Q.top();
+    }
+};
+
+//***************************************************** SOLUTION 3: Using Sorting Technique *******************************************************
 //Time: O(N log N)
 //Space: O(k) 
 
