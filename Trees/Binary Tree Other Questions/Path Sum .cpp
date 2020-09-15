@@ -9,7 +9,7 @@ public:
             return false;
         
         //If it is a leaf node and the sum
-        if(root->left == NULL && root->right == NULL && root->val == sum) 
+        if(root->left == NULL && root->right == NULL && sum-root->val == 0) 
             return true;
         
         return hasPathSum(root->left, sum-root->val) || hasPathSum(root->right, sum-root->val);
