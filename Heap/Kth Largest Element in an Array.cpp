@@ -36,8 +36,8 @@ public:
 };
 
 //***************************************************** Solution 2: Using Heap (With Priority Queue) **********************************************
-//Time: O(N log k)
-//Space: O(k)
+//Time: O(N log N)
+//Space: O(N)
 
 class Solution {
 public:
@@ -57,6 +57,49 @@ public:
             Q.pop();
         }
         
+        return Q.top();
+    }
+};
+
+//***************************************************** Solution 2A: Using Heap (With Priority Queue) **********************************************
+//Time: O(N log k)
+//Space: O(k)
+
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) 
+    {
+        int n = nums.size();
+        
+        if(n == 1) return nums[0];
+        
+        priority_queue<int, vector<int>,greater<int>> Q;
+        
+        //First Push K elements into the Queue
+        for(int i=0; i<k; i++)
+        {
+            cout << nums[i] << " ";
+            Q.push(nums[i]); 
+        }
+        
+        cout << endl;
+        
+        //if n != k, base case 
+        if(n != k)
+        {
+            //Traverse through the remaining elements from k
+            for(int i=k; i<n; i++)
+            {
+                //And push to min Heap, only if the top element is less than the number 
+                if(Q.top() < nums[i])
+                {
+                    cout << nums[i] << " ";
+                    Q.pop(); //Pop out the top element before pushing 
+                    Q.push(nums[i]); //Push the element 
+                }  
+            }
+        }
+         
         return Q.top();
     }
 };
