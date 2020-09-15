@@ -63,7 +63,7 @@ public:
 
 //***************************************************** SOLUTION 3: Using Sorting Technique *******************************************************
 //Time: O(N log N)
-//Space: O(k) 
+//Space: O(1) 
 
 class Solution {
 public:
