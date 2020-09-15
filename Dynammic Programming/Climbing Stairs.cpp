@@ -7,14 +7,14 @@ public:
     {
         vector<int> result;
         
-        a.push_back(1); //For 1 step
-        a.push_back(2); //For 2 step
+        result.push_back(1); //For 1 step
+        result.push_back(2); //For 2 step
         
         for(int i=2;i<=n-1;i++)
         {
-            a.push_back(a[i-1]+a[i-2]);
+            result.push_back(result[i-1]+result[i-2]);
         }
         
-        return a[n-1];
+        return result[n-1];
     }
 };
