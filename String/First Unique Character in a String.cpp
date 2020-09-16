@@ -30,9 +30,9 @@ public:
         
         unordered_map<char,int> MyMap;  //Create a map
         
-        for(int i : s) //Step 1
+        for(int i = 0; i<s.size(); i++) //Step 1
         {
-            MyMap[i] ++; //Step 2
+            MyMap[s[i]] ++; //Step 2
         }
         
         for(int i=0; i<s.size(); i++) //Step 3
