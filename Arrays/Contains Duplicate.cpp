@@ -21,9 +21,7 @@ public:
 }
 };
 
-
-
-//************************************************  METHOD 2 - Using SETS ******************************
+//************************************************  METHOD 2 - Using SET *************************************************************
 //Time: O(N log N) 
 //Space: O(N)
 
@@ -46,3 +44,25 @@ public:
     }
 };
 
+//************************************************  METHOD 3 - Brute Foce Method *************************************************************
+//Time: O(N^2)
+//Space: O(1) 
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) 
+    {
+        int n = nums.size();
+        
+        for(int i=0; i<n; i++)
+        {
+            for(int j=i+1; j<n; j++)
+            {
+                if(nums[i] == nums[j])
+                    return true; 
+            }
+        }
+        
+        return false; 
+    }
+};
