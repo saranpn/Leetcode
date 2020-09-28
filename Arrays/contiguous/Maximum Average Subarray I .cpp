@@ -20,10 +20,8 @@ public:
                 maxAvg = max(currAvg, maxAvg); //then select the maximum number between currAvg and maxAvg 
                 sum = sum - nums[start]; //Then, subtract the starting element from the sum
                 start++; //And increment the start pointer 
-                
             }
         }
-        
         return maxAvg;  //Finally return the maxAvg 
     }
 };
