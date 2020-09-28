@@ -33,3 +33,62 @@ public:
         return maxSoFar; //Finally return the maxSoFar 
     }
 };
+
+//**************************************************************** SOLUTION 2: QUADRATIC TIME ***************************************************************
+//TIME: O(N^2)
+//SPACE: O(1) 
+
+/* Here, we make use information we already have for the previous subarray sum */
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) 
+    {
+        int n = nums.size();
+        int maxSoFar = INT_MIN;
+
+        for (int left = 0; left < n; left++)
+        {
+            int currMax=0;
+            for(int right=left; right<n; right++) 
+            {
+                currMax = currMax + nums[right]; //Calculate the currMax
+                maxSoFar = max(maxSoFar, currMax); //Choose the maxSofar 
+            }
+        }
+
+        return maxSoFar; //Finally return the maxSoFar 
+    }
+};
+
+//**************************************************************** SOLUTION 3: CUBIC TIME ***************************************************************
+//TIME: O(N^3)
+//SPACE: O(1) 
+
+/* Cubic Solution will calculate the subarray sum by going all the way back to the beginning for every subarray.
+   So here we would be repeating the work. Calculating the sum of every subarray from the beginning. */
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) 
+    {
+        int n = nums.size();
+        int maxSoFar = INT_MIN;
+
+        for (int left = 0; left < n; left++)
+        {
+            for(int right=left; right<n; right++) 
+            {
+                int currMax=0;
+                for(int k=left; k<=right; k++) //Go all the back to the beginning to calculate the subarray 
+                {
+                    currMax = currMax + nums[k]; //Calculate the currMax 
+                }
+                
+                maxSoFar = max(maxSoFar, currMax); //Choose the maxSofar 
+            }
+        }
+
+        return maxSoFar; //Finally return the maxSoFar 
+    }
+};
