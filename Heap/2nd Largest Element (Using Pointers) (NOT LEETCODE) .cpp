@@ -4,6 +4,9 @@
                * The Array can have DUPLICATE values 
                
 ********************************************************************************************************************************/
+//Time: O(N)
+//Space: O(1) 
+
 #include <iostream>
 #include <vector> 
 #include <limits.h> //header for INT_MIN
