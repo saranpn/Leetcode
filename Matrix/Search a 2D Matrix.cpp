@@ -12,6 +12,8 @@
 --> Step 3: Continue this untill, we find the target (OR) the start pointer equals to end.
 
 **************************************************************************************************************************************************/
+//Time Complexity: O(log(m*n)) (Because, let's say we have 12 elements, so we can cut 12 into 6, then 6 into 3 etc.)
+//Space complexity: O(1) 
 
 class Solution {
 public:
@@ -19,31 +21,30 @@ public:
     {
         if(matrix.size() == NULL) return false; //Base case 
       
-        int row = matrix.size(); //will give you the row size 
-        int column = matrix[0].size(); //will give you the column size 
+        //First Calculate total number of rows and columns in the matrix   
+        int TotalRows = matrix.size();
+        int TotalColumns = matrix[0].size();
         
-        int start = 0; //matrix element count starts from 0 
-        int end = row * column -1;  //last number count of the matrix 
+        //Then make left pointer to point on first element and right pointer to point on last element of the matrix
+        int left = 0; 
+        int right = TotalRows * TotalColumns -1; 
         
         while(start <= end) 
         {
-            //will give you the middle index of the ARRAY at 1st iteration 
-            int middle = start + (end-start) /2; 
+            //Then, Calculate middle element index considering it as 1D array 
+            int middle = left + (right-left) /2; 
         
-            int row_matrix = middle/column; //Will give the ROW index of the middle element for MATRIX @ 1st iteration
-            int col_matrix = middle%column; //Will give the COLUMN index of the middle element for MATRIX @ 1st iteration
+            //Then, Calculate middle element index considering it as 2D array 
+            int middleElementValue = matrix[middle/column][middle%column]
 
             //if the element is found return true 
-            if(target == matrix[row_matrix][col_matrix]) 
-                return true;
+            if(target == middleElementValue) return true;
             
             //if the target is less than the middle element, then search only in the 1st half of the matrix 
-            else if(target < matrix[row_matrix][col_matrix]) 
-                end = middle-1;
+            else if(target < middleElementValue) end = middle-1;
             
             //if the target is greater than the middle element, then search only in the 2nd half of the matrix 
-            else if(target > matrix[row_matrix][col_matrix]) 
-                start = middle+1; 
+            else if(target > middleElementValue) start = middle+1; 
         }
         return false; //if not found then, return false 
     }
