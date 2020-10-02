@@ -75,31 +75,17 @@ public:
         
         priority_queue<int, vector<int>,greater<int>> Q;
         
-        //First Push K elements into the Queue
-        for(int i=0; i<k; i++)
-        {
-            cout << nums[i] << " ";
-            Q.push(nums[i]); 
-        }
         
-        cout << endl;
-        
-        //if n != k, base case 
-        if(n != k)
+        for(int i=0; i<n; i++)
         {
-            //Traverse through the remaining elements from k
-            for(int i=k; i<n; i++)
+            if(i<k) Q.push(nums[i]); //First Push K elements into the Queue
+            //And push to min Heap, only if the top element is less than the number 
+            else if(Q.top() < nums[i] && n!=k) //if n != k, base case 
             {
-                //And push to min Heap, only if the top element is less than the number 
-                if(Q.top() < nums[i])
-                {
-                    cout << nums[i] << " ";
-                    Q.pop(); //Pop out the top element before pushing 
-                    Q.push(nums[i]); //Push the element 
-                }  
+                Q.pop(); //Pop out the top element before pushing 
+                Q.push(nums[i]); //Push the element 
             }
         }
-         
         return Q.top();
     }
 };
@@ -132,14 +118,11 @@ int KthLargestNumber(vector<int> nums, int k, int result)
     
     int n = nums.size();
     
-    for(int i=0; i<k; i++)
+    for(int i=0; i<n; i++)
     {
-        Q.push(nums[i]);
-    }
-    
-    for(int i=k; i<n; i++)
-    {
-        if(Q.top()<nums[i])
+        if(i<k) Q.push(nums[i]);
+
+        else if(Q.top()<nums[i])
         {
             Q.pop();
             Q.push(nums[i]);
