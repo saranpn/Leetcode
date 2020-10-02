@@ -17,15 +17,48 @@ Consider the following matrix:
 ]
 
 ********************************************************************************************************************************************
+IDEA:  If the Matrix is sorted in this type, then we cannot do binary search by considering it as 1D array. We need some other approach 
 
-IDEA: --> Since the matrix is sorted on both rows and column, we are following a different approach here. 
-      --> Start from the 1st row, last column element and check if that is the target value,
-      --> if YES, return true (Target found)
-      --> if NOT, do things, if the target value is greater than that element, then eliminate that row 
-                         if the target value is less than that element, then eliminate that col
+ Approach 1: Start from the [1st_row][last_column] and start eliminating,
+               rows from bottom to up and columns from left to right
+                
+   Approach 2: Start from the [last_row][1st_column] and start eliminating, 
+               rows from top to bottom and columns from right to left  
+*********************************************************************************************************************************************
+//Time: O(m + n) 
+(What is the farthest I can go from Bottom to Up?? Depends on number of rows m)
+(What is the farthest I can go from left to right?? Depends on number of columns n)  */
 
-**********************************************************************************************************************************************/
+//Space: O(1) 
 
+
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) 
+{
+    if(matrix.size() == 0) return false; //Base Case 
+
+    //Approach 1:
+    int row = 0; //1st row (ROW INDEX)
+    int col = matrix[0].size()-1; //last column (COLUMN INDEX)
+
+    //Be in the loop, until the row is smaller than given row size and column is greater than zero
+    while(row < matrix.size() && col >= 0)
+    {
+        int element = matrix[row][col]; // Element in the 2D Array
+
+        if(target == element) return true; //if Target is found, return True
+
+        else if(target > element) row++; //if Target is greater than the element, then eliminate rows from Bottom to up
+
+        else if(target < element) col--; //if Target is lesser than the element, then eliminate cols from left to right 
+    }
+
+    return false; //Return false if the element is not found 
+}
+};
+
+//***************************************************************** FULL CODE ****************************************************************
 #include <iostream>
 #include <vector> 
 using namespace std;
