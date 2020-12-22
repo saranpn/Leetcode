@@ -8,7 +8,7 @@ public:
 {
     int n = nums.size();
 
-    if(n == NULL || n == 1) return false; //If there is only 1 or 0 number in the array, then return false (No duplicate)
+    if(n == 0) return false; //If there is 0 number in the array, then return false (No duplicate)
 
     sort(nums.begin(),nums.end()); //Sorting the array
 
