@@ -1,6 +1,42 @@
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) 
+    {
+        int n = nums.size();
+        int i = 0;
+        int j = 1;
+        
+        while(j < n)
+        {
+            
+            //Case 1: Increment i
+            if(nums[i]!=0 && nums[j] ==0) i++;
+            
+            //Case 2: Increment j
+            else if(nums[i]==0 && nums[j]==0) j++;
+                    
+            //Case 3: Increment both i and j
+            else if(nums[i]!=0 && nums[j] !=0) 
+            {
+                i++;
+                j++;
+            }
+            
+            //Case 4: Swap only if i=0 and j !=0, and then increment i and j 
+            else if(nums[i]==0 && nums[j]!=0)
+            {
+                swap(nums[i],nums[j]);
+                i++;
+                j++;
+            }
+        }
+    }
+};
+
+
 /****************************************************** SOLUTION 1: In place solution ****************************************************************************
 //TIME: O(N) --> Traversing array once 
-//SPACE: O(N) --> Using Extra Array
+//SPACE: O(1) --> No Extra Array
 
  IDEA: By using Inplace method without using extra space (vector). So, we here use two pointers called left and right.
          At first both left and right pointer will be pointing on the zero index. 
