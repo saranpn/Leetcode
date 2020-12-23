@@ -62,32 +62,30 @@ public:
 
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
+    vector<int> twoSum(vector<int>& nums, int target) 
+    {
+        vector<int> result(2); 
+        map<int,int> MyMap;
+        int n = nums.size();
+    
+        //Traverse the array and store the value and index in the map 
+        for(int i=0; i<n; i++)
+            MyMap[nums[i]] = i;
         
-        vector<int> result;   // To return the "result" vector
-        
-        int n = nums.size();  
-        
-        int diff; // To find the difference between target and the picked element
-        
-        unordered_map<int,int> m;  // Create a map
-        
-        for(int i=0; i<nums.size(); i++)
+        //Traverse the array 
+        for(int i=0; i<n; i++)
         {
-            diff = target - nums[i];  // Pick every element in an array and calculate the difference = target - pickedElement
+            int diff = target - nums[i]; //Find the difference 
             
-  //Check the difference we found is in there in the map (AND) the index of the difference is not equal to the index of the picked element
-  
-            if(m.find(diff) != m.end() && m.find(diff)->second != i)
+            //If the difference value is there in the map and also that index is not the same index as i, then we found the pair 
+            if(MyMap[diff] && MyMap[diff] != i)
             {
-                result.push_back(m.find(diff)->second);  //push the index of the difference 
-                result.push_back(i); //push the index of the picked element
-                
-                return result; //return the result
+                result[0] = i; //Store the index i 
+                result[1] = MyMap[diff]; //Store the other index 
             }
-            m[nums[i]] = i; // if the conditions are not satisfied, we need to store the element with its index in the map
         }
-        return result; //if we don't find the solution, return the empty vector
+        
+        return result; //Finally return the result
     }
 };
 
