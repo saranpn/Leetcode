@@ -86,3 +86,27 @@ public:
         return ans; 
     }
 };
+
+//******************************************************** SOLUTION 4: Brute Force Method ***********************************************************
+//Time: O(N^2)
+//Space: O(1)
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) 
+    {
+        int n = nums.size();
+        
+        int ans = 0; 
+        
+        for(int i=0; i<n-1; i++) // i starts from 0 and 1 less than the total number of elements in the array 
+        {
+            for(int j=i+1; j<n; j++) // j is 1 greater than i, till the last element of the array  
+            {
+                if(nums[i] == nums[j]) ans = nums[i];
+            }
+        }
+        
+        return ans; 
+    }
+};
