@@ -71,11 +71,11 @@ class Solution {
 public:
     int majorityElement(vector<int>& nums) 
     {
-        //vector<int> nums = {1,1,2,2,5,5,5,5,2};
+        int n = nums.size();   
         
-        sort(nums.begin(),nums.end());
+        sort(nums.begin(), nums.end());
         
-        return nums[nums.size()/2]; //after sorting the majority element would be the center element in the array.
+        return nums[n/2];
     }
 };
 
