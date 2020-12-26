@@ -8,6 +8,8 @@ public:
     {
         int n = nums.size();
         
+        int ans = 0; 
+        
         unordered_map<int,int> MyMap;
         
         for(int i=0; i<n; i++)
@@ -15,15 +17,12 @@ public:
             MyMap[nums[i]]++;
         }
         
-        for(auto v : MyMap)
+        for(auto v: MyMap)
         {
-            if(v.second >= 2)
-            {
-                return v.first;
-            }
+            if(v.second >= 2) ans = v.first; 
         }
         
-        return 0;
+        return ans; 
     }
 };
 
