@@ -1,24 +1,4 @@
-Source: https://leetcode.com/problems/single-number/
-Author: Saravana Kumar 
-
-/*******************************************************************************************
-Given a non-empty array of integers, every element appears twice except for one. Find that single one.
-
-Note:
-
-Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
-
-Example 1:
-
-Input: [2,2,1]
-Output: 1
-Example 2:
-
-Input: [4,1,2,1,2]
-Output: 4
-
-******************************************************************************************/
-
+//*********************************************************** SOLUTION 1: Using Bit Manipulation *******************************
 //Time: O(N)
 //Space: O(1) 
 
@@ -38,17 +18,60 @@ public:
 };
 
 
-/* NOTE: XOR only has two properties
+//*********************************************************** SOLUTION 2: Using Hash Map ******************************************
+//Time: O(N)
+//Space: O(N)
 
-    1. XOR of a number with the same number gives zero. Example: 2 ^ 2 = 0 
-    2. XOR of a number with zero gives that number itself. Example: 3 ^ 0 = 3
-    3. XOR of a number with the different number gives the sum of two numbers. Example: 2 ^ 4 = 6
-    
-    [Then what about XOR of a number with another different number] --> It modify/arrange itself
-        m = 4 ^ 1 ^ 2 ^ 1 ^  2 
-        m = 4 ^ 1 ^ 1 ^ 2 ^ 2 
-        m = 4 ^ 0 ^ 0
-        m = 4 ^ 0 
-        m = 4    
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) 
+    {
+        unordered_map<int,int> MyMap;
+        int ans = 0;
+        int n = nums.size();
         
-        */
+        for(int i=0; i<n; i++)
+        {
+            MyMap[nums[i]]++;
+        }
+        
+        for(auto v: MyMap)
+        {
+            if(v.second == 1)
+                ans = v.first;
+        }   
+        return ans; 
+    }
+};
+
+//*********************************************************** SOLUTION 3: Using Hash Set ******************************************
+//Time: O(N)
+//Space: O(N)
+
+/* IDEA: Add unique element to the list.
+         If the element is not unique then remeove that element from the list
+         Finally you will be left with only 1 single unique number 
+*/
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+    set<int> MySet; 
+    int n = nums.size();
+    
+    for(int i=0; i<n; i++)
+    {   
+        if(MySet.count(nums[i])) //If the value is found, then it is a duplicate element, 
+            MySet.erase(nums[i]); //So remove that from the set 
+        else
+            MySet.insert(nums[i]); //If the value is not found, then insert it into the set. 
+    }
+    
+    //Traverse the Set and return the Single Number 
+    for(int v: MySet)
+    {
+        return v;
+    }     
+    return -1; 
+    }
+};
