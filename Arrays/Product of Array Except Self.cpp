@@ -1,85 +1,96 @@
-/* Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
+//************************************************************ SOLUTION 1: Without Using Extra Array ****************************************
+//Time: O(N)
+//Space: O(1) 
 
-Example:
+/* IDEA: We can make the result vector to hold the product values of left for each element in the array.
+         And for other direction (right) we can use varialbe to calculate the product values of the right and then multiply it with the result vector. 
+*/ 
 
-Input:  [1,2,3,4]
-Output: [24,12,8,6]
-Constraint: It's guaranteed that the product of the elements of any prefix or suffix of the array (including the whole array) fits in a 32 bit integer.
-
-Note: Please solve it without division and in O(n).
-
-Follow up:
-Could you solve it with constant space complexity? */
-
-/********************************************************************************************************************************************************/
-
-
-// Time: O(N) (Traversing the arrray twice) 
-// Space: O(N) (Creating an extra array for storing the result
-
-// This solution won't work if there is a zero in the array. 
-
-
-/* Idea: Multiply all the elements in the array and calculate total product value. Then traverse the array and divide each value by the current i value, 
-         to get the multiplication of all the other elements  */
-         
 class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) 
     {
-        vector<int> result;
-        int totalproduct = 1;
+        int n = nums.size();
         
-        for(int i=0; i<nums.size(); i++)
-        {
-            totalproduct = totalproduct * nums[i];
-        }
+        vector<int> result(n); 
         
-        for(int j=0; j<nums.size(); j++)
+        result[0] = 1;  
+ 
+        for(int i=1; i<n; i++)
+            result[i] = result[i-1] * nums[i-1];
+        
+        int right = 1; 
+        
+        for(int i=n-1; i>=0; i--)
         {
-            result.push_back(totalproduct/nums[j]);
-        }
+            result[i] = result[i] * right;
+            right = right * nums[i];
+        } 
+        return result; 
+    }
+};
+
+//************************************************************* SOLUTION 2: Using Extra Array Solution ****************************************
+//Time: O(N)
+//Space: O(N)
+
+/* IDEA: Traverse forward and calculate all the left products of each element in the array
+         Traverse backward and calculate all the right products of each element in the array
+         Finally, multiply both to get the final result vector. 
+*/
+
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) 
+    {
+        int n = nums.size();
+        
+        //Inititalize 3 arrays (result, left_product, right_product) 
+        vector<int> result(n); 
+        vector<int> left_products(n);
+        vector<int> right_products(n);
+        
+        //
+        left_products[0] = 1;    //Define the 1st element of left_product array 
+        right_products[n-1] = 1; //Define the last element of right_product array 
+        
+        for(int i=1; i<n; i++)
+            left_products[i] = left_products[i-1] * nums[i-1];
+        
+        for(int i=n-2; i>=0; i--)
+            right_products[i] = right_products[i+1] * nums[i+1];
+        
+        for(int i=0; i<n; i++)
+            result[i] = left_products[i] * right_products[i];
         
         return result; 
     }
 };
 
-/*******************************************************************************************************************************************************/
+//******************************************************************** SOLUTION 3: Using Division Method ****************************************
+//Time: O(N)
+//Space: O(1)
 
-// ONLINE COMPILER SOLUTION: 
+//NOTE: This method won't work if we have zero in the array. 
 
-#include <iostream>
-#include<vector> 
-#include<unordered_map>
+/* IDEA: Traverse the array and calculate the total product. 
+         Traverse the array again and divide the current element with total product */
 
-using namespace std;
-
-int main()
-{
-    vector<int> nums = {1,2,3,4};
-
-    vector<int>result;
-    
-    int totalproduct = 1; 
-
-    for(int i=0; i<nums.size(); i++)
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) 
     {
-        totalproduct = totalproduct * nums[i];
+        int n = nums.size();
+        vector<int> result(n); 
+        int total_product = 1;
         
+        for(int i=0; i<n; i++)
+            total_product = total_product * nums[i];  
+        
+        for(int i=0; i<n; i++)
+            result[i] = total_product/nums[i];
+         
+        return result; 
     }
-    
-    cout << "totalproduct = " << totalproduct << endl;
-    
-    for(int i=0; i<nums.size(); i++)
-    {
-        result.push_back(totalproduct/nums[i]);
-    }
-    
-    for(int j=0; j<result.size(); j++)
-    {
-        cout << result[j] << " ";
-    }
-
-    return 0;
-}
+};
 
