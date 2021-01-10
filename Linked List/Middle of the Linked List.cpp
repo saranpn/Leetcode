@@ -19,6 +19,8 @@ public:
         
 //For ODD values given, while looping fast->next will be null at 1 point
 //For EVEN values given, while looping fast will be null at 1 point 
+        
+        //Everytime we have to check fast pointer AND fast->next pointer is NOT NULL, if any one of this is NULL, then it won't enter the while loop 
         while(fast != NULL && fast->next != NULL)
         {
             slow = slow->next; //move by 1 place
