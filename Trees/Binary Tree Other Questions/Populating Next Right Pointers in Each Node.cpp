@@ -26,8 +26,9 @@ public:
         //Create a Queue 
         queue<Node*> Q; 
 		
-	    //Push the root into the Queue
+	//Push the root into the Queue
         Q.push(root);
+	    
         //Whenever we finish a level in the tree we also push NULL to the Queue 
         //Since root is the only element in the first level, we push both root and NULL to the Queue 
         Q.push(NULL);
