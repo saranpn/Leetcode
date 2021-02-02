@@ -40,10 +40,13 @@ public:
 			
             //if current Node is NOT NULL and curr->left is not NULL, then push left node into the Queue
             if(curr != NULL && curr->left != NULL) Q.push(curr->left);
+		
             //if current Node is NOT NULL and curr->righ is not NULL, then push right node into the Queue
             if(curr != NULL && curr->right != NULL) Q.push(curr->right);
+		
             //if current Node is NOT NULL and Queue is NOT EMPTY, then point the next pointer to the Queue's front Node
             if(curr != NULL && !Q.empty()) curr->next = Q.front();
+		
             //if current Node is NULL and Queue is NOT EMPTY, then we have reached the end node of some level in the tree. At that time we need to push NULL to the Queue 
             if(curr == NULL && !Q.empty()) Q.push(NULL);
         }  
