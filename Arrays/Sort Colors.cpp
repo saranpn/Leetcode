@@ -1,3 +1,39 @@
+// ********************************************************** ONE PASS SOLUTION ***********************************************************************
+/* IDEA: Move all the Zeros to the front, and move all the Twos to the back, and then the Ones will automatically end up in the middle */
+
+class Solution {
+public:
+    void sortColors(vector<int>& nums) 
+    {
+        int i = 0; //Pointer for Zero
+        int j = nums.size()-1; //Pointer for Two
+        
+        int ptr = j; //Common pointer 
+        
+        while(i<=ptr)
+        { 
+            if(nums[ptr] == 0) //When Common pointer is Zero
+            {   //Put Zeros to the front
+                swap(nums[i],nums[ptr]); //Then swap Zero and Common Pointer
+                i++; //Increment Zero Pointer
+            }
+            
+            else if(nums[ptr] == 2) //When Common pointer is Two
+            {   //Put Twos to the back 
+                swap(nums[j],nums[ptr]); //Then swap Two and Common Pointer  
+                j--; //Decrement Two Pointer
+                ptr--; //Decrement Common Pointer 
+            }
+            else //Means if One
+            {
+                ptr--; //Decrement Common Pointer 
+            }
+        }
+    }
+};
+
+
+
 //************************************************************** TWO PASS SOLUTION **********************************************************
 
 class Solution {
