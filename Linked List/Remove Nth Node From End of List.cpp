@@ -12,44 +12,63 @@
    
    --> Also keep track of previous node of second pointer by using "prev" pointer    */
  
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+// ***********************************************SOLUTION 1: Using First and Second Pointer (One Pass) *****************************************************
+//Time: O(N)
+//Space: O(1) 
+
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) 
     {
-        if(head == NULL) return {}; //Base case
+        //Base Case
+        if(head == NULL) return {}; 
         
-        ListNode* first = head; //Create a temp pointer 
-      
-        for(int i=0; i<n; i++) //First move the temp pointer till n Node
+        ListNode* first = head; //Create first pointer 
+        ListNode* second = head; //Create second pointer
+        ListNode* prev = NULL; //Ceate prev pointer to keep track of the previous node to the second pointer 
+        
+        //First move the temp pointer till n Node
+        for(int i=0; i<n; i++)
         {
-            first = first->next; //traverse 
+            first = first->next; 
             
-            if(first == NULL) //if the first pointer reaches NULL, that means, the node to be deleted is the head node 
+            if(first == NULL) //if the first pointer reaches NULL, that means, the node to be deleted is the head node
             {
-                head = head->next; //so make head to point on head's next 
-                return head; //and return head 
+                head = head->next;
+                return head; 
             }
         }
         
-        ListNode* second = head; //Create second pointer 
-        ListNode* prev = head; //create prev pointer to keep track of the previous node to the second pointer 
-        
-        while(first!=NULL) //traverse till first pointer reaches null 
+        while(first != NULL) //traverse till first pointer reaches null 
         {
-            prev = second; //increment prev
-            second = second->next; //increment second 
-            first = first->next; //increment first 
+            first = first->next;
+            prev = second;
+            second = second->next; 
         }
         
         //finally second pointer will reach the node that we want to delete
         //so make prev's next to point on second's next 
-        prev->next = second->next;
+        prev->next = second->next; 
         
-        return head; //Finally return the head 
+        return head;   
     }
 };
 
-// ***********************************************SOLUTION 2: By using count *****************************************************
+
+
+
+
+// ***********************************************SOLUTION 2: By Counting (Two Pass) *****************************************************
 //Time: O(N)
 //Space: O(1) 
 
