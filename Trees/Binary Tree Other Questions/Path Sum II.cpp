@@ -13,7 +13,7 @@ public:
     
     void pathSumHelper(TreeNode* root, vector<vector<int>>& res,vector<int> temp, int sum)
     {
-        if(root == nullptr) return; //Base Case
+        if(root == NULL) return; //Base Case
         
         temp.push_back(root->val); //Push root's val into temp vector 
         
