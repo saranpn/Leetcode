@@ -1,3 +1,41 @@
+//************************************************************** SOLUTION 1: Top Right Corner Approach ******************************
+//Time: O(N+M)
+//Space: O(1)
+
+//If both row and column are sorted 
+
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) 
+    {
+        if(matrix.size() == NULL) return false; //Base case 
+      
+        //Start by Top Right Corner 
+        int row = 0; //WKT, At Top, Row would be Zero 
+        int col = matrix[0].size() - 1; //WKT, At Right Corner, Column would be Matrix.size(which gives the row size) - 1 
+        
+        //While our Co-Ordinates are still valid positions. 
+        //That is Row Not going down the size of the Matrix and Column is Not going right to the negative number
+        while (row < matrix.size() && col >= 0) 
+        {
+            //If the value is greater than the target, then eliminate that total column by decrementing col variable
+            if (matrix[row][col] > target) col--;
+            
+            //If the value is smaller than the target, then eliminate that total row by incrementing row variable
+            else if (matrix[row][col] < target) row++;
+            
+            //else, if the value is equal to the target, then return True  
+            else return true;
+    
+        }
+        
+        //Finally Return True, if we didn't find the Target Value 
+        return false; 
+    }
+};
+
+
+
 /*  LINK: https://www.youtube.com/watch?v=eT0UqrYuqbg&t=133s
 
 /* IDEA: // *************************************** Only applicable for "SORTED MATRIX" **************************************************
