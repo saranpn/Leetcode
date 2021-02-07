@@ -1,18 +1,15 @@
 class Solution {
-private: 
-
 public:
-    bool hasPathSum(TreeNode* root, int sum) 
+    bool hasPathSum(TreeNode* root, int targetSum) 
     {
-        //Base case 
-        if(root == NULL)
-            return false;
+        if(root==NULL) return false; //Base Case
         
-        //If it is a leaf node and the sum
-        if(root->left == NULL && root->right == NULL && sum-root->val == 0) 
-            return true;
+        //If it is a leaf node and the target-root's val == 0, the return true, meaning we found the sum 
+        if(root->left == NULL && root->right == NULL && targetSum-root->val==0)
+            return true; 
         
-        return hasPathSum(root->left, sum-root->val) || hasPathSum(root->right, sum-root->val);
+        //If it is not a leaf node, then call the left sub tree and right sub tree recursively.
+        return hasPathSum(root->left,targetSum-root->val) || hasPathSum(root->right,targetSum-root->val);
     }
 };
 
