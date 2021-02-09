@@ -4,23 +4,28 @@ class Solution {
 public:
     int kthSmallest(vector<vector<int>>& matrix, int k) 
     {
-        priority_queue<int> Q; //Using max heap 
+        priority_queue<int> Q;
+        
+        int count = 0;
         
         for(int i=0; i<matrix.size(); i++)
         {
-            for(int j=0; j<matrix[i].size(); j++)
+            for(int j=0; j<matrix[0].size(); j++)
             {
-                Q.push(matrix[i][j]);   //Push Everything to max heap  
+                if(count<k) 
+                {
+                    Q.push(matrix[i][j]);
+                    count++;
+                }
+                
+                else if(Q.top()>matrix[i][j])
+                {
+                    Q.pop();
+                    Q.push(matrix[i][j]);
+                }
             }
         }
         
-        int n = Q.size() - k; //Get the number of elements we have to pop out from the Queue 
-        
-        for(int i= 0; i<n; i++) //Traverse and pop out from the Queue 
-        {
-            Q.pop();
-        }
-        
-        return Q.top(); //Finally return the Kth Smallest Element
+        return Q.top();
     }
 };
