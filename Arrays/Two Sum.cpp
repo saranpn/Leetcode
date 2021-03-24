@@ -83,6 +83,9 @@ public:
             {
                 result[0] = i; //Store the index i 
                 result[1] = MyMap[diff]; //Store the other index 
+                /*If you use result.push_back, then use "break" at the end. 
+                Example: If target is 3, then for 1 we will have 2. And for 2 we will have 1 pair. So we end up with 2 pair.
+                And we dont want that. */
             }
         }
         
