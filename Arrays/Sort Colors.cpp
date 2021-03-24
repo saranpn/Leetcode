@@ -1,5 +1,15 @@
 // ********************************************************** ONE PASS SOLUTION ***********************************************************************
-/* IDEA: Move all the Zeros to the front, and move all the Twos to the back, and then the Ones will automatically end up in the middle */
+/* IDEA: Move all the Zeros to the front, and move all the Twos to the back, and then the Ones will automatically end up in the middle 
+
+3 Pointers: i ----> For Zero (Starts from Beginning of the Array)
+            j ----> For Two (Starts from End of the Array)
+          ptr ----> Common Pointer (Starts from End of the Array)
+          
+ If, nums[i] == 0 --------> Swap i and ptr
+ If, nums[j] == 2 --------> Swap j and ptr
+ else,            --------> Decrement ptr 
+
+*/
 
 class Solution {
 public:
