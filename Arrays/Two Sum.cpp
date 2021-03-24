@@ -77,7 +77,8 @@ public:
         {
             int diff = target - nums[i]; //Find the difference 
             
-            //If the difference value is there in the map and also that index is not the same index as i, then we found the pair 
+            // If the difference value is there in the map and also that index is not the same index as i, then we found the pair 
+            
             if(MyMap[diff] && MyMap[diff] != i)
             {
                 result[0] = i; //Store the index i 
