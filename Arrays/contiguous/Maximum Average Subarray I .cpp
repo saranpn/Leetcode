@@ -16,8 +16,11 @@ public:
             
             if(i >= k-1) //After we reached k elements 
             {
+                //STEP 1: Calculate what is needed 
                 currAvg = sum/k; //Calculate the avg for those k elements 
                 maxAvg = max(currAvg, maxAvg); //then select the maximum number between currAvg and maxAvg 
+                
+                //STEP 2: Move the window
                 sum = sum - nums[start]; //Then, subtract the starting element from the sum
                 start++; //And increment the start pointer 
             }
