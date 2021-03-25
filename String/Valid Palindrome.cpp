@@ -57,3 +57,43 @@ public:
         return true; //Return true if it is a palindrome
     }
 };
+
+
+//******************************************* Solution 2: Using Stack ***********************************************************************
+// Time: O(N)
+// Space: O(N)
+
+class Solution {
+public:
+    bool isPalindrome(string s) 
+    {
+        int n = s.size();
+        
+        stack<char> MyStack;
+        
+        //Traverse array and push it into Stack
+        for(int i=0; i<n; i++)
+        {
+            if(isalnum(s[i])) //Push only upper and lower case letters 
+            {
+                MyStack.push(s[i]);
+            }
+        }
+        
+        //Traverse array and compare it to the Top element in the Stack 
+        for(int i=0; i<n; i++)
+        {
+            if(isalnum(s[i]))
+            {
+                if(tolower(MyStack.top()) != tolower(s[i]))
+                {
+                    return false;
+                }
+
+                MyStack.pop();
+            }
+        }
+
+        return true;
+    }
+};
