@@ -84,3 +84,45 @@ public:
         
     }
 };
+
+//********************************************** Solution 3: Brute Force **************************************************************
+// Time: O(N^2)
+// Space: O(1) 
+
+class Solution {
+public:
+    int firstUniqChar(string s) 
+    {
+        int n = s.size();
+        
+        int ans = -1;
+        
+        int count = 0;
+        
+        string copy;
+        
+        for(int i=0; i<n; i++)
+        {
+            copy[i] = s[i];
+        }
+        
+        for(int i=0; i<n; i++)
+        {
+            for(int j=0; j<n; j++)
+            {
+                if(s[i] != copy[j]) count++;
+                
+                if(count == n-1) return i; 
+            }
+            
+            count = 0;
+        }
+        
+        return ans; 
+    }
+};
+
+
+
+
+
