@@ -1,40 +1,33 @@
 class Solution {
 public:
-    bool isSubsequence(string sub_string, string string) 
+    bool isSubsequence(string s, string t) 
     {
-         int i = 0; //pointer for string
-         int j = 0; //pointer for sub_string
-    
-    //Base case 
-    if(sub_string.size() == 0 ) 
-    { 
-        cout << "The sub-array is Empty";
-        return true; 
-    }
-    
-    while(i<string.size() && j<sub_string.size()) //loop until one of the strings comes to an end 
-    {
-        if(sub_string[j] != string[i]) //if the char from sub-string is not equal to string 
+        int n = s.size(); //sub-string size
+        int m = t.size(); //string size
+        
+        int sub_s1 = 0; //pointer for sub-string
+        int s2 = 0; //pointer for string
+        
+        //Base Case:
+        if(n==0) return true;
+        
+        while(sub_s1<n && s2<m) //loop until one of the strings comes to an end 
         {
-            i++; //increment the "i" pointer of the string
-        }
-        else if(sub_string[j] == string[i]) //if both the char are Equal 
-        {
-            cout << "Found " << string[i] << endl; 
-            j++; //increment the "j" pointer of the sub_string 
-            i++; //also increment the "i" pointer of the string
+            //Case 1: If the char are Not-Equal, Increment String pointer 
+            if(s[sub_s1] != t[s2]) 
+                s2++;
             
-            //Sub-Sequence is valid only when j value becomes the size of sub-string (Think yourself of when j value is incremented)
-            if(j == sub_string.size()) 
+            //Case 2: If the char are Equal
+            else
             {
-                cout << "Valid"; 
-                return true;
-            }
+                sub_s1++; //Increment Sub-String Pointer 
+                s2++; //Increment String Pointer 
+                
+                if(sub_s1 == n) //If everything is fine, at one point Sub_string pointer number will be same as the size of the sub-string
+                    return true;  //Return True 
+            }    
         }
-    }
-    
-    //if Not this is not a valid Sub-Sequence
-    cout << "Not Valid";
-    return false;
+        
+        return false; //if Not this is not a valid Sub-Sequence, return false 
     }
 };
