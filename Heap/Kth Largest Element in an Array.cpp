@@ -79,8 +79,9 @@ public:
         for(int i=0; i<n; i++)
         {
             if(i<k) Q.push(nums[i]); //First Push K elements into the Queue
+            
             //And push to min Heap, only if the top element is less than the number 
-            else if(Q.top() < nums[i] && n!=k) //if n != k, base case 
+            else if(nums[i] > Q.top() && n!=k) //if n != k, base case 
             {
                 Q.pop(); //Pop out the top element before pushing 
                 Q.push(nums[i]); //Push the element 
